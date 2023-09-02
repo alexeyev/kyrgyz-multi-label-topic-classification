@@ -6,16 +6,16 @@ Both data and baselines will be released after the competition.
 
 ## Conference paper
 
-The preprint will be released soon.
+The dataset will be introduced at the [AIST 2023](https://aistconf.org/) conference. Meanwhile, the [arXiv preprint](https://arxiv.org/abs/2308.15952) is out.
 
-```
-@inproceedings{alekseev2023benchmarking,
-  title={Benchmarking Multi-Label Topic Classification in Kyrgyz Language},
-  author={Alekseev, Anton and Nikolenko, Sergey and Kabaeva, Gulnara},
-  booktitle={International Conference on Analysis of Images, Social Networks and Texts},
-  pages={???},
-  year={2023},
-  organization={Springer}
+```bibtex
+@misc{alekseev2023benchmarking,
+      title={Benchmarking Multilabel Topic Classification in the Kyrgyz Language}, 
+      author={Anton Alekseev and Sergey I. Nikolenko and Gulnara Kabaeva},
+      year={2023},
+      eprint={2308.15952},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
 }
 ```
 
