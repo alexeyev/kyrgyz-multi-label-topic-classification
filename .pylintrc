@@ -1,2 +1,2 @@
 [MESSAGES CONTROL]
-disable=W1203
+disable=W1203, W1201
