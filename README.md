@@ -2,7 +2,7 @@
 
 Multi-label [24.kg](https://24.kg/kyrgyzcha/) Kyrgyz news articles classification into 20 topics: data &amp; baselines.
 
-Both data and baselines will be released after the competition.
+Preparing data and code.
 
 ## Conference paper
 
