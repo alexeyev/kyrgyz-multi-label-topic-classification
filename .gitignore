@@ -1,5 +1,7 @@
-*.pyc
-*~
+__pycache__
 .idea/
 data/
+.ipynb_checkpoints/
+*.pyc
+*~
 *.log

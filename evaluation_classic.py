@@ -145,7 +145,7 @@ if __name__ == "__main__":
             logger.info(
                 f"NDCG-3 score      {ndcg_score(orig_y_test, predictions_proba, k=3) * 100:02.1f}% (more is better)")
         else:
-            logger.info(f"NDCG              not computable")
+            logger.info("NDCG              not computable")
 
         logger.info(
             f"at-least-1 score  {at_least_one_hit_rate(orig_y_test, predictions) * 100:02.1f}% (more is better)")
