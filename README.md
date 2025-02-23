@@ -2,8 +2,6 @@
 
 Multi-label [24.kg](https://24.kg/kyrgyzcha/) Kyrgyz news articles classification into 20 topics: data &amp; baselines.
 
-Preparing data and code.
-
 ## Conference paper
 
 The dataset has been introduced at the [AIST 2023](https://aistconf.org/) conference. [ArXiv preprint](https://arxiv.org/abs/2308.15952) is available.
