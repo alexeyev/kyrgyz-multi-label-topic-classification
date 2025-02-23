@@ -147,12 +147,6 @@ if __name__ == "__main__":
     encoded_dev.set_format("torch")
     encoded_test.set_format("torch")
 
-    # Making sure everything is right
-    # print(tokenizer.decode(encoded_train[5]["input_ids"])[:1000])
-    # print([tokenizer.id2token(i) for i in encoded_train[5]["input_ids"]][:1000])
-    # print([id2label[int(i)] for i in encoded_train[5]["labels"].nonzero().flatten()])
-    # print(len(encoded_train[0]["input_ids"]), len(encoded_train[0]["attention_mask"]))
-
     # Setting up the metrics of interest
     # Loading the model, setting hyperparameters and training
     SecClass = AutoModelForSequenceClassification
@@ -161,15 +155,8 @@ if __name__ == "__main__":
                                      num_labels=len(labels),
                                      id2label=id2label,
                                      label2id=label2id)
-    """
-    for param in model.roberta.parameters():
-        param.requires_grad = False
-    model.dropout.p = 0.5
-    for param in model.bert.pooler.parameters():
-        param.requires_grad = True
-    """
 
-    # model.to("cuda")
+    model.to("cuda")
 
     args = TrainingArguments(
         "roberta-finetuned-kyrgyz-news-multilabel",
