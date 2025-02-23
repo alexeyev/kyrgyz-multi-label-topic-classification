@@ -1,7 +1,6 @@
-scikit-learn==0.22.1
+scipy==1.11.3
+scikit-learn==0.24.2
 scikit-multilearn==0.2.0
-numpy>=1.26.4
-pandas>=2.1.4
-transformers>=4.49.0
+transformers>=4.20.0
 datasets>=3.3.2
-torch==2.1.0
+torch==2.0.1 --index-url https://download.pytorch.org/whl/cpu

@@ -1,5 +1,7 @@
 """ Will multilingual LLMs work?  """
 
+import logging
+
 import numpy as np
 import pandas as pd
 import torch
@@ -13,9 +15,6 @@ from transformers import AutoModelForSequenceClassification
 from transformers import AutoTokenizer
 from transformers import EvalPrediction
 from transformers import TrainingArguments, Trainer
-from transformers import logging
-
-logging.set_verbosity_warning()
 
 logger = logging.getLogger("evaluation-neural")
 logger.setLevel(logging.DEBUG)
@@ -27,7 +26,7 @@ logger.addHandler(fh)
 
 
 def at_least_one_hit_rate(y_true, y_pred):
-    if type(y_pred) != np.ndarray:
+    if not isinstance(y_pred, np.ndarray):
         y_pred = y_pred.toarray()
 
     hits_per_line = np.sum(y_true * y_pred, axis=1)
@@ -68,7 +67,7 @@ def multi_label_metrics(preds, labls, threshold=0.5):
 
 def compute_metrics(p: EvalPrediction):
     preds = p.predictions[0] if isinstance(p.predictions, tuple) else p.predictions
-    result = multi_label_metrics(predictions=preds, labels=p.label_ids)
+    result = multi_label_metrics(preds=preds, labls=p.label_ids)
     return result
 
 
@@ -84,7 +83,7 @@ if __name__ == "__main__":
     orig_test_text = np.array(df_test["text"].map(str))
 
     mlb = MultiLabelBinarizer(sparse_output=False)
-    extract_labels = lambda d:d["labels_set"].map(lambda x: tuple(x.split(",")))
+    extract_labels = lambda d: d["labels_set"].map(lambda x: tuple(x.split(",")))
     orig_y_train = mlb.fit_transform(extract_labels(df_train))
     orig_y_test = mlb.transform(extract_labels(df_test))
     labels = mlb.classes_
@@ -156,12 +155,12 @@ if __name__ == "__main__":
 
     # Setting up the metrics of interest
     # Loading the model, setting hyperparameters and training
-    sec_class = AutoModelForSequenceClassification
-    model = sec_class.from_pretrained(model_name,
-                                      problem_type="multi_label_classification",
-                                      num_labels=len(all_labels),
-                                      id2label=id2label,
-                                      label2id=label2id)
+    SecClass = AutoModelForSequenceClassification
+    model = SecClass.from_pretrained(model_name,
+                                     problem_type="multi_label_classification",
+                                     num_labels=len(labels),
+                                     id2label=id2label,
+                                     label2id=label2id)
     """
     for param in model.roberta.parameters():
         param.requires_grad = False
